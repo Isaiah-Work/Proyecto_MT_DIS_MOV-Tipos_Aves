@@ -1,17 +1,25 @@
-# proyecto_mt
+# Proyecto Medio Término Programación de Dispositvos Móviles
+Aplicación tipo Material de Flutter que funciona como catálogo de aves, con navegación inferior, menú lateral y adaptación a la orientación del dispositivo.
 
-A new Flutter project.
+## Nota de desarrollo
 
-## Getting Started
+- Desarrollado en **Visual Studio Code** con la extensión oficial de **Flutter** y **Dart**, en lugar de Android Studio.
+- El proyecto sigue siendo 100% Flutter Material y es compatible con Android Studio si se desea abrir ahí.
 
-This project is a starting point for a Flutter application.
+## Cumplimiento de las especificaciones
 
-A few resources to get you started if this is your first Flutter project:
+- **Scaffold**
+- **BottomNavigationBar**
+- **Tres secciones de contenido**
+- **Imagen y texto por sección**
+- **Cambio de sección con tap**correspondientes.
+- **Drawer**
+- **Pantalla principal con texto descriptivo**
+- **Reorganización según orientación**
+- **Dos diseños de Widgets**
+- **Imágenes con esquinas redondeadas**
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Temática
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Catálogo de aves.
+- Cada sección presenta una imagen representativa y un texto corto descriptivo.
