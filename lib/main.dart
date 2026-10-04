@@ -239,20 +239,37 @@ class _HomePageState extends State<HomePage> {
         title: Text("Tipos de Aves"),
       ),
       body: 
-        OrientationBuilder(
-            builder: (context, orientation) {
-              switch (_selectedIndex){
-                case 0:
-                return Center(child: _buildSeccion1(orientation));
-                case 1:
-                return Center(child: _buildSeccion2(orientation));
-                case 2:
-                return Center(child: _buildSeccion3(orientation));
-                default:
-                return _buildSeccion1(orientation);
-              }
-            },
-          
+        Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+              child: Text(
+                'Explora y conoce las características fascinantes de distintas especies de aves en esta aplicación.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: kBlue700,
+                ),
+              ),
+            ),
+            Expanded(
+              child: OrientationBuilder(
+                builder: (context, orientation) {
+                  switch (_selectedIndex){
+                    case 0:
+                    return Center(child: _buildSeccion1(orientation));
+                    case 1:
+                    return Center(child: _buildSeccion2(orientation));
+                    case 2:
+                    return Center(child: _buildSeccion3(orientation));
+                    default:
+                    return _buildSeccion1(orientation);
+                  }
+                },
+              ),
+            ),
+          ],
         ),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
