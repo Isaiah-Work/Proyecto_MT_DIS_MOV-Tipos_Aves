@@ -10,7 +10,6 @@ final ThemeData _appTheme = _buildAppTheme();
 
 ThemeData _buildAppTheme(){
   final ThemeData base = ThemeData.light(useMaterial3: true);
-  
   return base.copyWith(
     textTheme: GoogleFonts.rubikTextTheme(base.textTheme),
     colorScheme: base.colorScheme.copyWith(
@@ -130,7 +129,7 @@ class _HomePageState extends State<HomePage> {
     final bool isLandscape = (orientation == Orientation.landscape);
 
     final double imageWidth = isLandscape ? 400:300;
-    final double imageHeight = isLandscape ? 200:300;
+    final double imageHeight = isLandscape ? 180:300;
 
     return Stack(
       children: [
@@ -139,8 +138,8 @@ class _HomePageState extends State<HomePage> {
           child: Image.asset(
             'assets/aves_1.png',
             fit:BoxFit.cover,
-            width: 300,
-            height: 300,
+            width: imageWidth,
+            height: imageHeight,
           ),
         ),
         Positioned(
@@ -164,7 +163,7 @@ class _HomePageState extends State<HomePage> {
     final bool isLandscape = (orientation == Orientation.landscape);
 
     final double imageWidth = isLandscape ? 400:300;
-    final double imageHeight = isLandscape ? 200:300;
+    final double imageHeight = isLandscape ? 180:300;
 
     return Stack(
       children: [
@@ -173,8 +172,8 @@ class _HomePageState extends State<HomePage> {
           child: Image.asset(
             'assets/aves_2.png',
             fit:BoxFit.cover,
-            width: 300,
-            height: 300,
+            width: imageWidth,
+            height: imageHeight,
           ),
         ),
         Positioned(
@@ -198,7 +197,7 @@ class _HomePageState extends State<HomePage> {
     final bool isLandscape = (orientation == Orientation.landscape);
 
     final double imageWidth = isLandscape ? 400:300;
-    final double imageHeight = isLandscape ? 200:300;
+    final double imageHeight = isLandscape ? 180:300;
 
     return Stack(
       children: [
@@ -207,8 +206,8 @@ class _HomePageState extends State<HomePage> {
           child: Image.asset(
             'assets/aves_3.jpg',
             fit:BoxFit.cover,
-            width: 300,
-            height: 300,
+            width: imageWidth,
+            height: imageHeight,
           ),
         ),
         Positioned(
@@ -238,39 +237,48 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("Tipos de Aves"),
       ),
-      body: 
-        Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-              child: Text(
-                'Explora y conoce las características fascinantes de distintas especies de aves en esta aplicación.',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: kBlue700,
+      body: OrientationBuilder(
+        builder: (context, orientation) {
+          final bool isLandscape = (orientation == Orientation.landscape);
+
+          Widget content;
+          switch (_selectedIndex) {
+            case 0:
+              content = Center(child: _buildSeccion1(orientation));
+              break;
+            case 1:
+              content = Center(child: _buildSeccion2(orientation));
+              break;
+            case 2:
+              content = Center(child: _buildSeccion3(orientation));
+              break;
+            default:
+              content = Center(child: _buildSeccion1(orientation));
+          }
+
+          if (isLandscape) {
+            return content;
+          } else {
+            return Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                  child: Text(
+                    'Explora y conoce las características fascinantes de distintas especies de aves en esta aplicación.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      color: kBlue700,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-            Expanded(
-              child: OrientationBuilder(
-                builder: (context, orientation) {
-                  switch (_selectedIndex){
-                    case 0:
-                    return Center(child: _buildSeccion1(orientation));
-                    case 1:
-                    return Center(child: _buildSeccion2(orientation));
-                    case 2:
-                    return Center(child: _buildSeccion3(orientation));
-                    default:
-                    return _buildSeccion1(orientation);
-                  }
-                },
-              ),
-            ),
-          ],
-        ),
+                Expanded(child: content),
+              ],
+            );
+          }
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
